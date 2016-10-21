@@ -79,11 +79,13 @@
     </BuildLog>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CTCI\Ch12\PrintLast_K_Lines.cpp" />
+    <ClCompile Include="CTCI\Sen_Ch12_CppTest.cpp" />
+    <ClCompile Include="GeeksforGeeks\Sen_StringArrayTop10.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CTCI\Ch12\PrintLast_K_Lines.h" />
+    <ClInclude Include="CTCI\Sen_Ch12_CppTest.h" />
+    <ClInclude Include="GeeksforGeeks\Sen_StringArrayTop10.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -13,18 +13,34 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\GeeksforGeeks">
+      <UniqueIdentifier>{4af8b50c-7a38-4c06-9868-4761c7a839c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GeeksforGeeks">
+      <UniqueIdentifier>{fd5ae0ed-68ce-4d93-a0fb-f07207720137}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\CTCI">
+      <UniqueIdentifier>{ebdff7ec-054a-49fb-a22a-ccbceec18747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CTCI">
+      <UniqueIdentifier>{a996a481-e094-4f2b-bd38-a5efedcd7157}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="CTCI\Sen_Ch12_CppTest.cpp">
+      <Filter>Source Files\CTCI</Filter>
     </ClCompile>
-    <ClCompile Include="CTCI\Ch12\PrintLast_K_Lines.cpp">
-      <Filter>Resource Files</Filter>
+    <ClCompile Include="GeeksforGeeks\Sen_StringArrayTop10.cpp">
+      <Filter>Source Files\GeeksforGeeks</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CTCI\Ch12\PrintLast_K_Lines.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="CTCI\Sen_Ch12_CppTest.h">
+      <Filter>Header Files\CTCI</Filter>
+    </ClInclude>
+    <ClInclude Include="GeeksforGeeks\Sen_StringArrayTop10.h">
+      <Filter>Header Files\GeeksforGeeks</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

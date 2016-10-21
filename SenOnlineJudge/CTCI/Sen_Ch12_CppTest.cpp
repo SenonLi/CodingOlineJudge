@@ -1,8 +1,17 @@
-#include "PrintLast_K_Lines.h"
+#include "Sen_Ch12_CppTest.h"
 
 
+Sen_Ch12_CppTest::Sen_Ch12_CppTest()
+{
+}
 
-void printLastKLines(string fileName, int k){
+
+Sen_Ch12_CppTest::~Sen_Ch12_CppTest()
+{
+}
+
+
+void Sen_Ch12_CppTest::printLastKLines(int k, string fileName){
 	ifstream inFile(fileName);
 
 	if (inFile)	{
@@ -20,11 +29,10 @@ void printLastKLines(string fileName, int k){
 
 		for (int i = 0; i < validLinesCount; ++i)
 			cout << linesArray[(startIdx + i) % k] << endl;
-		
+
 		delete[] linesArray;
 	}
 
 	inFile.close();
 }
-
 
