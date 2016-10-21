@@ -1,12 +1,6 @@
-#include <iostream>
-#include <fstream>
-#include <istream>
-#include <string>
-#include <algorithm> 
-//#include <stdio.h>
-//#include <stdlib.h>
+#include "PrintLast_K_Lines.h"
 
-using namespace std;
+
 
 void printLastKLines(string fileName, int k){
 	ifstream inFile(fileName);
@@ -33,12 +27,4 @@ void printLastKLines(string fileName, int k){
 	inFile.close();
 }
 
-int main(){
-	string fileName = "ReadMe.txt";
-	int k = 10;
-	printLastKLines(fileName, k);
-
-	getchar();
-	return 0;
-}
 

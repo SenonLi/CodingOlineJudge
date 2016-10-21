@@ -1,2 +1,3 @@
-# CodingOlineJudge
-Online Judge (OJ)
+# Sen Coding for Oline Judge
+C++ OOP one solution Practice
+

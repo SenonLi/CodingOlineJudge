@@ -62,23 +62,23 @@ string decimalToBinary(double decimal)	{
 	return binaryOut;
 }
 
-int main()
-{
-	//int N = 1024, M = 19, i = 2, j = 6;
-	//int num = -1;
-	//printBinary(N);
-	//printBinary(M);
-	//printBinary(insert(N, M, i, j));
-	//printBinary(num);
-	//printBinary(clearBitsIthough0(num, 3));
-	//printBinary(clearBitsIthough0(num, 0));
-
-	double decimal;
-	cin >> decimal;
-	cout << decimalToBinary(decimal);
-
-	getchar();
-	getchar();
-
-	return 0;
-}
+//int main()
+//{
+//	//int N = 1024, M = 19, i = 2, j = 6;
+//	//int num = -1;
+//	//printBinary(N);
+//	//printBinary(M);
+//	//printBinary(insert(N, M, i, j));
+//	//printBinary(num);
+//	//printBinary(clearBitsIthough0(num, 3));
+//	//printBinary(clearBitsIthough0(num, 0));
+//
+//	double decimal;
+//	cin >> decimal;
+//	cout << decimalToBinary(decimal);
+//
+//	getchar();
+//	getchar();
+//
+//	return 0;
+//}
