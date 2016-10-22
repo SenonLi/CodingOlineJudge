@@ -10,11 +10,10 @@ using namespace std;
 #include "GeeksforGeeks/Sen_StringArrayTop10.h"
 
 
-
-
 int main(){
 
 	Sen_StringArrayTop10 stringArrayObject;
+	stringArrayObject.showAlphabetStringReverse();
 
 
 

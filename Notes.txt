@@ -1,0 +1,22 @@
+* Not allowed to initial arrays: cannot specify explicit initializer for arrays
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

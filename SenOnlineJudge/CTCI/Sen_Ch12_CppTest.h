@@ -18,7 +18,7 @@ public:
 	Sen_Ch12_CppTest();
 	virtual ~Sen_Ch12_CppTest();
 
-	void printLastKLines(int k, string fileName = "CTCI/ReadFile.txt");
+	void printLastKLines(int k, string fileName);
 
 protected:
 	string ReadFileName = "CTCI/ReadFile.txt";

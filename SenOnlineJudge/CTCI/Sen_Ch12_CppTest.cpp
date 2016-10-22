@@ -11,7 +11,7 @@ Sen_Ch12_CppTest::~Sen_Ch12_CppTest()
 }
 
 
-void Sen_Ch12_CppTest::printLastKLines(int k, string fileName){
+void Sen_Ch12_CppTest::printLastKLines(int k, string fileName = "CTCI/ReadFile.txt"){
 	ifstream inFile(fileName);
 
 	if (inFile)	{
