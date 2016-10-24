@@ -13,8 +13,8 @@ using namespace std;
 int main(){
 
 	Sen_StringArrayTop10 stringArrayObject;
-	stringArrayObject.showAlphabetStringReverse();
-
+	//stringArrayObject.showAlphabetStringReverse();
+	stringArrayObject.allPalPartitions(string("nitin"));
 
 
 	//Sen_Ch12_CppTest cppTestObject;

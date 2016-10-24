@@ -1,5 +1,5 @@
 * Not allowed to initial arrays: cannot specify explicit initializer for arrays
-
+* All palindromic partitions: to make currentPartition work well for all partitions, whenever there is one push_back, there mush be one pop_back called.
 
 
 
