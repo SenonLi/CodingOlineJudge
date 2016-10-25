@@ -34,12 +34,18 @@
     <ClCompile Include="GeeksforGeeks\Sen_StringArrayTop10.cpp">
       <Filter>Source Files\GeeksforGeeks</Filter>
     </ClCompile>
+    <ClCompile Include="GeeksforGeeks\Sen_LinkedListTop10.cpp">
+      <Filter>Source Files\GeeksforGeeks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CTCI\Sen_Ch12_CppTest.h">
       <Filter>Header Files\CTCI</Filter>
     </ClInclude>
     <ClInclude Include="GeeksforGeeks\Sen_StringArrayTop10.h">
+      <Filter>Header Files\GeeksforGeeks</Filter>
+    </ClInclude>
+    <ClInclude Include="GeeksforGeeks\Sen_LinkedListTop10.h">
       <Filter>Header Files\GeeksforGeeks</Filter>
     </ClInclude>
   </ItemGroup>
