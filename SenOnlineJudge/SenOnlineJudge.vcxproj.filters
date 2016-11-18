@@ -25,6 +25,12 @@
     <Filter Include="Source Files\CTCI">
       <UniqueIdentifier>{a996a481-e094-4f2b-bd38-a5efedcd7157}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ArchieMD_Test">
+      <UniqueIdentifier>{13dfe961-c7ba-4fe5-92d8-466c92318b85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ArchieMD_Test">
+      <UniqueIdentifier>{4b1812e8-01bd-44c5-b681-fce83bcf0e40}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -37,6 +43,12 @@
     <ClCompile Include="GeeksforGeeks\Sen_LinkedListTop10.cpp">
       <Filter>Source Files\GeeksforGeeks</Filter>
     </ClCompile>
+    <ClCompile Include="ArchieMD_Test\Employee.cpp">
+      <Filter>Source Files\ArchieMD_Test</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchieMD_Test\Person.cpp">
+      <Filter>Source Files\ArchieMD_Test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CTCI\Sen_Ch12_CppTest.h">
@@ -47,6 +59,12 @@
     </ClInclude>
     <ClInclude Include="GeeksforGeeks\Sen_LinkedListTop10.h">
       <Filter>Header Files\GeeksforGeeks</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchieMD_Test\Person.h">
+      <Filter>Header Files\ArchieMD_Test</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchieMD_Test\Employee.h">
+      <Filter>Header Files\ArchieMD_Test</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

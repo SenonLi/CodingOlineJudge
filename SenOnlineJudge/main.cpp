@@ -5,10 +5,10 @@ using namespace std;
 
 
 //#include "CTCI/Sen_Ch12_CppTest.h"
+//#include "GeeksforGeeks/Sen_StringArrayTop10.h"
+//#include "GeeksforGeeks/Sen_LinkedListTop10.h"
 
-
-#include "GeeksforGeeks/Sen_StringArrayTop10.h"
-#include "GeeksforGeeks/Sen_LinkedListTop10.h"
+#include "ArchieMD_Test/Employee.h"
 
 int main(){
 
@@ -17,8 +17,7 @@ int main(){
 	//stringArrayObject.allPalPartitions(string("nitin"));
 
 
-	Sen_LinkedListTop10 linkedListObject;
-	linkedListObject.showLinkedListSorting();
+	Employee teacher;
 
 
 	//Sen_Ch12_CppTest cppTestObject;

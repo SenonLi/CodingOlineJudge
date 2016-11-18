@@ -81,12 +81,16 @@
     </BuildLog>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ArchieMD_Test\Employee.cpp" />
+    <ClCompile Include="ArchieMD_Test\Person.cpp" />
     <ClCompile Include="CTCI\Sen_Ch12_CppTest.cpp" />
     <ClCompile Include="GeeksforGeeks\Sen_LinkedListTop10.cpp" />
     <ClCompile Include="GeeksforGeeks\Sen_StringArrayTop10.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ArchieMD_Test\Employee.h" />
+    <ClInclude Include="ArchieMD_Test\Person.h" />
     <ClInclude Include="CTCI\Sen_Ch12_CppTest.h" />
     <ClInclude Include="GeeksforGeeks\Sen_LinkedListTop10.h" />
     <ClInclude Include="GeeksforGeeks\Sen_StringArrayTop10.h" />
