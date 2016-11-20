@@ -49,6 +49,9 @@
     <ClCompile Include="ArchieMD_Test\Person.cpp">
       <Filter>Source Files\ArchieMD_Test</Filter>
     </ClCompile>
+    <ClCompile Include="ArchieMD_Test\Manager.cpp">
+      <Filter>Source Files\ArchieMD_Test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CTCI\Sen_Ch12_CppTest.h">
@@ -64,6 +67,9 @@
       <Filter>Header Files\ArchieMD_Test</Filter>
     </ClInclude>
     <ClInclude Include="ArchieMD_Test\Employee.h">
+      <Filter>Header Files\ArchieMD_Test</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchieMD_Test\Manager.h">
       <Filter>Header Files\ArchieMD_Test</Filter>
     </ClInclude>
   </ItemGroup>

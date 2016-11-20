@@ -13,7 +13,9 @@ public:
 
 	void inline SetName(const std::string strName)	{ name = strName; }
 	std::string GetName() const { return name; }
-	void inline SetAge(const int iAge)	{ age = iAge; }
+
+	virtual void SetAge(const int iAge) = 0;
+
 	int GetAge() const { return age;  }
 
 private:
