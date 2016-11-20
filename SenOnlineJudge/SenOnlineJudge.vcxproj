@@ -85,7 +85,6 @@
   <ItemGroup>
     <ClCompile Include="ArchieMD_Test\Employee.cpp" />
     <ClCompile Include="ArchieMD_Test\Manager.cpp" />
-    <ClCompile Include="ArchieMD_Test\Person.cpp" />
     <ClCompile Include="CTCI\Sen_Ch12_CppTest.cpp" />
     <ClCompile Include="GeeksforGeeks\Sen_LinkedListTop10.cpp" />
     <ClCompile Include="GeeksforGeeks\Sen_StringArrayTop10.cpp" />

@@ -49,8 +49,6 @@ private:
 };
 
 
-Manager* Manager::managerInstance = NULL;
-
 
 
 #endif // __Manager__

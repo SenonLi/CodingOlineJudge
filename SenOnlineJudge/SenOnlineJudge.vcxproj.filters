@@ -46,9 +46,6 @@
     <ClCompile Include="ArchieMD_Test\Employee.cpp">
       <Filter>Source Files\ArchieMD_Test</Filter>
     </ClCompile>
-    <ClCompile Include="ArchieMD_Test\Person.cpp">
-      <Filter>Source Files\ArchieMD_Test</Filter>
-    </ClCompile>
     <ClCompile Include="ArchieMD_Test\Manager.cpp">
       <Filter>Source Files\ArchieMD_Test</Filter>
     </ClCompile>

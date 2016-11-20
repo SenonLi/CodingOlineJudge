@@ -1,5 +1,6 @@
 #include "Manager.h"
 
+Manager* Manager::managerInstance = NULL;
 
 Manager::Manager()
 {

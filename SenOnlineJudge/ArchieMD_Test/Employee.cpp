@@ -38,8 +38,8 @@ Employee & Employee::operator = (const Employee &other)	{
 }
 
 void Employee::SetAge(const int iAge)	{ 
-	SetAge(iAge);
-	printf("Employee's Age is Set");
+	assignAge(iAge);
+	std::cout << "Employee's Age is Set" << std::endl;
 }
 
 bool Employee::InvokeJob(const std::string &jobName, int invokeFuncNum)	{
@@ -58,9 +58,12 @@ bool Employee::InvokeJob(const std::string &jobName, int invokeFuncNum)	{
 	//}
 }
 
-void Employee::AddJob(const std::string &jobName, const ptrFuncCheckNum &noIdeaFunc)	{
+//void Employee::AddJob(const std::string &jobName, const ptrFuncCheckNum &noIdeaFunc)	{
+void Employee::AddJob(const std::string &jobName, ptrFuncCheckNum noIdeaFunc)	{
 
-	jobsFuncMap->insert(std::map<std::string, ptrFuncCheckNum>::value_type(jobName, noIdeaFunc));
+	jobsFuncMap->insert(std::pair<std::string, ptrFuncCheckNum>(jobName, noIdeaFunc));
+
+	//jobsFuncMap->insert(std::map<std::string, ptrFuncCheckNum>::value_type(jobName, noIdeaFunc));
 
 }
 

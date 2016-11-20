@@ -9,7 +9,7 @@
 
 typedef bool (*ptrFuncCheckNum)(const int &invokeFuncNum);
 
-class Employee :public Person
+class Employee : public Person
 {
 public:
 	Employee(); 
@@ -24,7 +24,10 @@ public:
 
 	void SetAge(const int iAge);
 	bool InvokeJob(const std::string &jobName, int invokeFuncNum);
-	void AddJob(const std::string &jobName, const ptrFuncCheckNum &noIdeaFunc);
+	//void AddJob(const std::string &jobName, const ptrFuncCheckNum &noIdeaFunc);
+
+	void AddJob(const std::string &jobName, ptrFuncCheckNum noIdeaFunc);
+
 	void RemoveJob(const std::string &jobName);
 
 protected:
