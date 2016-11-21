@@ -50,8 +50,8 @@ void Manager::Remove(Employee* badEmployee)	{
 		bool found = false;
 		for (int i = 0; i < ptrEmployeeVector.size(); i++)	{
 			if (badEmployee == ptrEmployeeVector.at(i))	{
-				delete badEmployee;
-
+				
+				//delete badEmployee;
 				// vector.erase automatically trim the size of the vector
 				ptrEmployeeVector.erase(ptrEmployeeVector.begin() + i);
 				found = true;
@@ -110,9 +110,8 @@ void Manager::RemoveAll(const std::string &jobName)	{
 			// predicate by jobFunc
 			if ((func)(ptrEmployeeVector.at(i)->GetAge()))	{
 
-				delete ptrEmployeeVector.at(i);
-				ptrEmployeeVector.erase(ptrEmployeeVector.begin() + i);
-				// vector.erase automatically trim the size of the vector
+				//delete ptrEmployeeVector.at(i);
+				ptrEmployeeVector.erase(ptrEmployeeVector.begin() + i);	// vector.erase automatically trim the size of the vector
 			}
 		}
 	}

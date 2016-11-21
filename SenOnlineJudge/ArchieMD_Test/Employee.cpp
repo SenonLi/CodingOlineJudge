@@ -19,8 +19,6 @@ Employee::Employee(const Employee  &other)	{
 		while (it != other.jobsFuncMap->end())
 		{
 			jobsFuncMap->insert(std::map<std::string, Callback>::value_type(it->first, it->second));
-
-			//jobsFuncMap->at(it->first) = Callback(it->second);
 			++it;
 		}
 	}
@@ -58,7 +56,7 @@ Employee & Employee::operator = (const Employee &other)	{
 		std::map<std::string, Callback>::const_iterator it = other.jobsFuncMap->begin();
 		while (it != other.jobsFuncMap->end())
 		{
-			jobsFuncMap->at(it->first) = it->second;
+			jobsFuncMap->insert(std::map<std::string, Callback>::value_type(it->first, it->second));
 			++it;
 		}
 	}
@@ -90,8 +88,6 @@ bool Employee::InvokeJob(const std::string &jobName, int invokeFuncNum)	{
 }
 
 void Employee::AddJob(const std::string &jobName, const Callback &noIdeaFunc)	{
-
-	//jobsFuncMap->insert(std::pair<std::string, Callback>(jobName, noIdeaFunc));
 
 	jobsFuncMap->insert(std::map<std::string, Callback>::value_type(jobName, noIdeaFunc));
 }
