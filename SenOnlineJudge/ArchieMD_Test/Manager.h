@@ -18,10 +18,10 @@ public:
 	void Remove(Employee* badEmployee);
 
 	Employee* Find(const std::string &employName) const;
-	std::vector<Employee>& FindAll(const std::string &jobName) const;
+	std::vector<Employee> FindAll(const std::string &jobName) const;
 	void RemoveAll(const std::string &jobName);
 
-	void Assign(const std::string &employeeName, const std::string &jobName, const ptrFuncCheckNum &ptrFunc);
+	void Assign(const std::string &employeeName, const std::string &jobName, const Callback &ptrFunc);
 
 	void inline SetManagerName(const std::string strName)	{ SetName(strName); }
 	std::string inline GetManagerName() const { return GetName(); }
@@ -31,7 +31,7 @@ public:
 	bool InvokeManagerJob(const std::string &jobName, int invokeFuncNum)	{
 		InvokeJob(jobName, invokeFuncNum);
 	}
-	void AddManagerJob(const std::string &jobName, const ptrFuncCheckNum &noIdeaFunc)	{
+	void AddManagerJob(const std::string &jobName, const Callback &noIdeaFunc)	{
 		AddJob(jobName, noIdeaFunc);
 	}
 	void RemoveManagerJob(const std::string &jobName)	{

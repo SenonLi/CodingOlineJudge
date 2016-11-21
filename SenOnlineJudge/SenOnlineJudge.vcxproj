@@ -42,13 +42,13 @@
     <OutDir>$(SolutionDir)\..\$(Configuration)OnlineJudge</OutDir>
     <IntDir>$(SolutionDir)\..\$(Configuration)OnlineJudge</IntDir>
     <TargetName>..\..\$(Configuration)\$(MSBuildProjectName).log</TargetName>
-    <IncludePath>L:\liziy\Download\Sen_PSoC_BLE_Optical-Flow\CodingInterview\SenCodingOnlineJudge\SenOnlineJudge;$(IncludePath)</IncludePath>
+    <IncludePath>L:\liziy\Download\Sen_PSoC_BLE_Optical-Flow\CodingInterview\SenCodingOnlineJudge\SenOnlineJudge;C:\boost_1_60_0;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)\..\$(Configuration)OnlineJudge</OutDir>
     <IntDir>$(SolutionDir)\..\$(Configuration)OnlineJudge</IntDir>
     <TargetName>..\..\$(Configuration)\$(MSBuildProjectName).log</TargetName>
-    <IncludePath>L:\liziy\Download\Sen_PSoC_BLE_Optical-Flow\CodingInterview\SenCodingOnlineJudge\SenOnlineJudge;$(IncludePath)</IncludePath>
+    <IncludePath>L:\liziy\Download\Sen_PSoC_BLE_Optical-Flow\CodingInterview\SenCodingOnlineJudge\SenOnlineJudge;C:\boost_1_60_0;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

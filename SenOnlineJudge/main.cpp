@@ -10,7 +10,9 @@
 
 #include "ArchieMD_Test/Person.h"
 #include "ArchieMD_Test/Employee.h"
-//#include "ArchieMD_Test/Manager.h"
+#include "ArchieMD_Test/Manager.h"
+
+#include <boost/bind.hpp>
 
 //int main(){
 //
@@ -57,22 +59,30 @@ int main()
 	Employee * e2 = new Employee("Rose");
 	e1->SetAge(25);//print “Employee's Age is Set”
 	e2->SetAge(40);//print “Employee's Age is Set”
-	e1->AddJob("AgeCriteria1", &Young);
-	//e1->AddJob("AgeCriteria2", function pointer pointing to CheckAge::Old);
+	
+	CheckAge cheAge;
+	
+	e1->AddJob("AgeCriteria1", boost::bind(&Young, _1));
+	//Callback func = boost::bind<bool>(&Young, _1);
+	//func = boost::bind(&CheckAge::Old, cheAge, _1);
+	//bool a = func(20);
+	e1->AddJob("AgeCriteria2", boost::bind(&CheckAge::Old, cheAge, _1) );
 
-	//bool IsYoung20 = e1->InvokeJob(“AgeCriteria1”, 20);//IsYoung20 should be true
-	//bool IsOld40 = e1->InvokeJob(“AgeCriteria2”, 40);//IsOld40 should be true
-	//Manager::GetInstance().SetManagerName(“David”);
-	//Manager::GetInstance().SetManagerAge(31);//print “Employee's Age is Set”
-	//Manager::GetInstance().AddManagerJob(“YoungPredicate”, function pointer pointing to Young);
-	//Manager::GetInstance().AddManagerJob(“OldPredicate”, function pointer pointing to CheckAge::Old);
-	//Manager::GetInstance().Add(e1);
-	//Manager::GetInstance().Add(e2);
-	//Manager::GetInstance().Assign(“Rose”, “AgeCriteria1”, function pointer pointing to Young);
-	//bool IsYoung25 = Manager::GetInstance().Find(“Rose”)->InvokeJob(“AgeCriteria1”, 25);//IsYoung25 should be true
-	//std::vector v1 = Manager::GetInstance().FindAll(“YoungPredicate”);//v1 should contain Jack only
-	//Manager::GetInstance().RemoveAll(“OldPredicate”);//now only Jack remains in Manager's vector
-	//Manager::GetInstance().Remove(e1);//now no Employee remains in Manager's vector
+
+	bool IsYoung20 = e1->InvokeJob("AgeCriteria1", 20);//IsYoung20 should be true
+	bool IsOld40 = e1->InvokeJob("AgeCriteria2", 34);// 40);//IsOld40 should be true
+
+	Manager::GetInstance()->SetManagerName("David");
+	Manager::GetInstance()->SetManagerAge(31);//print “Employee's Age is Set”
+	Manager::GetInstance()->AddManagerJob("YoungPredicate", boost::bind(&Young, _1));
+	Manager::GetInstance()->AddManagerJob("OldPredicate", boost::bind(&CheckAge::Old, cheAge, _1));
+	Manager::GetInstance()->Add(e1);
+	Manager::GetInstance()->Add(e2);
+	Manager::GetInstance()->Assign("Rose", "AgeCriteria1", boost::bind(&Young, _1));
+	bool IsYoung25 = Manager::GetInstance()->Find("Rose")->InvokeJob("AgeCriteria1", 25);//IsYoung25 should be true
+	std::vector<Employee> v1 = Manager::GetInstance()->FindAll("YoungPredicate");//v1 should contain Jack only
+	Manager::GetInstance()->RemoveAll("OldPredicate");//now only Jack remains in Manager's vector
+	Manager::GetInstance()->Remove(e1);//now no Employee remains in Manager's vector
 	
 	delete e1;
 	delete e2;

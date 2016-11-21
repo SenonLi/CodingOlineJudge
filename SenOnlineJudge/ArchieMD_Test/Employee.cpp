@@ -3,20 +3,38 @@
 
 Employee::Employee()
 {
+	jobsFuncMap = new std::map<std::string, Callback>;
 }
 
 // Copy Constructor
 Employee::Employee(const Employee  &other)	{
-	;
+	jobsFuncMap = new std::map<std::string, Callback>;
+
+	if (this != &other)  // protect against invalid self-assignment
+	{
+		SetName(other.GetName());
+		SetAge(other.GetAge());
+		
+		std::map<std::string, Callback>::const_iterator it = other.jobsFuncMap->begin();
+		while (it != other.jobsFuncMap->end())
+		{
+			jobsFuncMap->insert(std::map<std::string, Callback>::value_type(it->first, it->second));
+
+			//jobsFuncMap->at(it->first) = Callback(it->second);
+			++it;
+		}
+	}
 }
 
 Employee::Employee(const std::string &name)	{
 	SetName(name); 
+
+	jobsFuncMap = new std::map<std::string, Callback>;
 }
 
 Employee::~Employee()
 {
-
+	delete jobsFuncMap;
 }
 
 
@@ -27,11 +45,22 @@ Employee::~Employee()
 // through a non-const reference parameter.
 
 Employee & Employee::operator = (const Employee &other)	{
+	
+	if (jobsFuncMap) delete jobsFuncMap;
+	
+	jobsFuncMap = new std::map<std::string, Callback>;
+
 	if (this != &other)  // protect against invalid self-assignment
 	{
 		SetName(other.GetName());
 		SetAge(other.GetAge());
-		;
+
+		std::map<std::string, Callback>::const_iterator it = other.jobsFuncMap->begin();
+		while (it != other.jobsFuncMap->end())
+		{
+			jobsFuncMap->at(it->first) = it->second;
+			++it;
+		}
 	}
 
 	return *this;
@@ -45,7 +74,9 @@ void Employee::SetAge(const int iAge)	{
 bool Employee::InvokeJob(const std::string &jobName, int invokeFuncNum)	{
 	//try	{
 		if (jobsFuncMap->find(jobName) != jobsFuncMap->end())	{
-			ptrFuncCheckNum ptrFuncCheck = jobsFuncMap->at(jobName);
+
+			Callback ptrFuncCheck = jobsFuncMap->at(jobName);
+
 			return ptrFuncCheck(invokeFuncNum);
 		}
 		else
@@ -58,13 +89,11 @@ bool Employee::InvokeJob(const std::string &jobName, int invokeFuncNum)	{
 	//}
 }
 
-//void Employee::AddJob(const std::string &jobName, const ptrFuncCheckNum &noIdeaFunc)	{
-void Employee::AddJob(const std::string &jobName, ptrFuncCheckNum noIdeaFunc)	{
+void Employee::AddJob(const std::string &jobName, const Callback &noIdeaFunc)	{
 
-	jobsFuncMap->insert(std::pair<std::string, ptrFuncCheckNum>(jobName, noIdeaFunc));
+	//jobsFuncMap->insert(std::pair<std::string, Callback>(jobName, noIdeaFunc));
 
-	//jobsFuncMap->insert(std::map<std::string, ptrFuncCheckNum>::value_type(jobName, noIdeaFunc));
-
+	jobsFuncMap->insert(std::map<std::string, Callback>::value_type(jobName, noIdeaFunc));
 }
 
 void Employee::RemoveJob(const std::string &jobName)	{

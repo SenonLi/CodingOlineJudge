@@ -2,7 +2,7 @@
 
 Manager* Manager::managerInstance = NULL;
 
-Manager::Manager()
+Manager::Manager() : Employee()
 {
 }
 
@@ -29,13 +29,18 @@ void Manager::Add(Employee* newEmployee)	{
 	else
 	{
 		int i = 0;
-		for (std::vector<Employee*>::iterator it = ptrEmployeeVector.begin();
-			it < ptrEmployeeVector.end(); it++, i++)	{
+		std::vector<Employee*>::iterator it = ptrEmployeeVector.begin();
+		bool inserted = false;
+		for ( ;	it < ptrEmployeeVector.end(); it++, i++)	{
+
 			if (newEmployee->GetAge() <= ptrEmployeeVector.at(i)->GetAge())	{
 				ptrEmployeeVector.insert(it, newEmployee);
+				inserted = true;
 				break;
 			}
 		}
+
+		if (!inserted)		ptrEmployeeVector.insert(it, newEmployee);
 	}
 }
 
@@ -72,17 +77,16 @@ Employee* Manager::Find(const std::string &employName) const{
 	return NULL;
 }
 
-std::vector<Employee>& Manager::FindAll(const std::string &jobName) const	{
+std::vector<Employee> Manager::FindAll(const std::string &jobName) const	{
 	std::vector<Employee> employeeVector;
 
 	//try{
 		if (jobsFuncMap->find(jobName) != jobsFuncMap->end())	{
 			//jobsFuncMap->at(jobName)
-			ptrFuncCheckNum func = jobsFuncMap->at(jobName);
+			Callback func = jobsFuncMap->at(jobName);
 			for (int i = 0; i < ptrEmployeeVector.size(); i++)	{
 				// predicate by jobFunc
-				if ((*func)(ptrEmployeeVector.at(i)->GetAge()))
-					employeeVector.push_back(*(ptrEmployeeVector.at(i)));
+				if ((func)(ptrEmployeeVector.at(i)->GetAge()))		employeeVector.push_back(*(ptrEmployeeVector.at(i)));
 			}
 
 			return employeeVector;
@@ -101,10 +105,10 @@ void Manager::RemoveAll(const std::string &jobName)	{
 
 	if (jobsFuncMap->find(jobName) != jobsFuncMap->end())	{
 
-		ptrFuncCheckNum func = jobsFuncMap->at(jobName);
+		Callback func = jobsFuncMap->at(jobName);
 		for (int i = 0; i < ptrEmployeeVector.size(); i++)	{
 			// predicate by jobFunc
-			if ((*func)(ptrEmployeeVector.at(i)->GetAge()))	{
+			if ((func)(ptrEmployeeVector.at(i)->GetAge()))	{
 
 				delete ptrEmployeeVector.at(i);
 				ptrEmployeeVector.erase(ptrEmployeeVector.begin() + i);
@@ -119,7 +123,7 @@ void Manager::RemoveAll(const std::string &jobName)	{
 }
 
 void Manager::Assign(const std::string &employeeName, const std::string &jobName
-	, const ptrFuncCheckNum &ptrFunc)	{
+	, const Callback &ptrFunc)	{
 
 	bool found = false;
 	for (int i = 0; i < ptrEmployeeVector.size(); i++)	{
