@@ -48,6 +48,7 @@ private:
 	std::vector<Employee*> ptrEmployeeVector;
 };
 
+int mainManager();
 
 
 
