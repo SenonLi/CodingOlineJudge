@@ -31,6 +31,12 @@
     <Filter Include="Header Files\ArchieMD_Test">
       <UniqueIdentifier>{4b1812e8-01bd-44c5-b681-fce83bcf0e40}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\LeetCode">
+      <UniqueIdentifier>{64486dfd-25d1-4108-ba6e-82ccef0dc06e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\LeetCode">
+      <UniqueIdentifier>{37775490-d9c6-48ea-85f3-069091e651d7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
