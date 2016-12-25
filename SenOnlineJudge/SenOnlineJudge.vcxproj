@@ -83,6 +83,7 @@
     </BuildLog>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\MemoryCodingTest\SenTravelSalesmanProb.cpp" />
     <ClCompile Include="ArchieMD_Test\Employee.cpp" />
     <ClCompile Include="ArchieMD_Test\Manager.cpp" />
     <ClCompile Include="CTCI\Sen_Ch12_CppTest.cpp" />
@@ -91,6 +92,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\MemoryCodingTest\SenTravelSalesmanProb.h" />
     <ClInclude Include="ArchieMD_Test\Employee.h" />
     <ClInclude Include="ArchieMD_Test\Manager.h" />
     <ClInclude Include="ArchieMD_Test\Person.h" />

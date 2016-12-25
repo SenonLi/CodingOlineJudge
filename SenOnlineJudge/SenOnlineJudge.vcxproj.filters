@@ -55,6 +55,9 @@
     <ClCompile Include="ArchieMD_Test\Manager.cpp">
       <Filter>Source Files\ArchieMD_Test</Filter>
     </ClCompile>
+    <ClCompile Include="..\MemoryCodingTest\SenTravelSalesmanProb.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CTCI\Sen_Ch12_CppTest.h">
@@ -74,6 +77,9 @@
     </ClInclude>
     <ClInclude Include="ArchieMD_Test\Manager.h">
       <Filter>Header Files\ArchieMD_Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MemoryCodingTest\SenTravelSalesmanProb.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
