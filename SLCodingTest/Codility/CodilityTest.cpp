@@ -6,7 +6,8 @@ CodilityTest::CodilityTest()
 {
 }
 
-
+/// <param name="N">Decimal Interger [IN/OUT]</summary>
+/// <return>The rightest binary gap </return>
 int CodilityTest::GetNextBinaryGap(int& N)
 {
 	int gapCount = 0;
