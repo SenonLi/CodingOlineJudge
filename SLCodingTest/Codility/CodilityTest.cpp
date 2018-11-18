@@ -124,6 +124,18 @@ int CodilityTest::OddOccurrencesInArray(vector<int> &A)
 
 
 
+int solution(vector<int> &A) {
+	// Need to use long, in case total is too large.
+	unsigned long total = 0;
+	for (int a : A) {
+		total += a;
+	}
+
+	unsigned int nMax = A.size() + 1;
+
+	return (nMax * (nMax + 1) / 2) - total;
+}
+
 
 
 

@@ -16,6 +16,9 @@ public:
 	// Find value that occurs in odd number of elements.
 	int OddOccurrencesInArray(vector<int> &A);
 
+	// Find the missing element in a given permutation.
+	int PermMissingElem(vector<int> &A);
+
 private:
 	int GetNextBinaryGap(int& N);
 };
