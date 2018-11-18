@@ -36,6 +36,7 @@
 
 # VS folder
 .vs
+DeprecatedCodingTest
 
 # Visual C++ cache files
 *.aps
