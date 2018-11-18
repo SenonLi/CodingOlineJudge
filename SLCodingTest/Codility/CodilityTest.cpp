@@ -1,6 +1,7 @@
 #include "../pch.h"
 #include "CodilityTest.h"
 
+#include <algorithm>
 
 /// <param name="N">Decimal Interger [IN/OUT]</summary>
 /// <return>The rightest binary gap </return>
@@ -122,9 +123,7 @@ int CodilityTest::OddOccurrencesInArray(vector<int> &A)
 	return result;
 }
 
-
-
-int solution(vector<int> &A) {
+int CodilityTest::PermMissingElem(vector<int> &A) {
 	// Need to use long, in case total is too large.
 	unsigned long total = 0;
 	for (int a : A) {
@@ -136,12 +135,52 @@ int solution(vector<int> &A) {
 	return (nMax * (nMax + 1) / 2) - total;
 }
 
+/*
+For example, consider array A such that
 
+  A[0] = 3
+  A[1] = 1
+  A[2] = 2
+  A[3] = 4
+  A[4] = 3
+We can split this tape in four places:
 
+P = 1, difference = |3 - 10| = 7
+P = 2, difference = |4 - 9| = 5
+P = 3, difference = |6 - 7| = 1
+P = 4, difference = |10 - 3| = 7
 
+the function should return 1, as explained above.
+*/
+int CodilityTest::TapeEquilibrium(vector<int> &A) 
+{
+	// This problem must traverse and calculate total sum for N times,
+	// cannot just go for both head/tail and just test partial sum of both side,
+	// because the rest in the middle could change the partial sum result.
+	long total = 0;
 
+	for (int a : A)
+		total += a;
 
+	long leftTotal = A[0];
+	long rightTotal = total - leftTotal;
 
+	// Have to initial minDiff using rightTotal - leftTotal
+	// Otherwise, you will always fail unless using the maximum of long
+	long minDiff = std::abs(rightTotal - leftTotal);
+
+	// Have to start from i= 1, because leftTotal already counted A[0]
+	// Have to End before the last one A.size() -2, because leftTotal should not count the last one
+	for (int i = 1; i < A.size() - 1; ++i)
+	{
+		leftTotal += A[i];
+		rightTotal = total - leftTotal;
+		long diff = std::abs(leftTotal - rightTotal);
+		minDiff = std::min(diff, minDiff);
+	}
+
+	return minDiff;
+}
 
 
 

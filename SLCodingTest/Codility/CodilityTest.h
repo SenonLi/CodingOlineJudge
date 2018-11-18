@@ -19,6 +19,10 @@ public:
 	// Find the missing element in a given permutation.
 	int PermMissingElem(vector<int> &A);
 
+	// Minimize the value |(A[0] + ... + A[P-1]) - (A[P] + ... + A[N-1])|
+	int TapeEquilibrium(vector<int> &A);
+
+
 private:
 	int GetNextBinaryGap(int& N);
 };
