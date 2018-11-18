@@ -2,10 +2,6 @@
 #include "CodilityTest.h"
 
 
-CodilityTest::CodilityTest()
-{
-}
-
 /// <param name="N">Decimal Interger [IN/OUT]</summary>
 /// <return>The rightest binary gap </return>
 int CodilityTest::GetNextBinaryGap(int& N)
@@ -76,4 +72,39 @@ int CodilityTest::GetMaxBinaryGap(int N) {
 	}
 
 	return maxGap;
+}
+
+/*
+For example, given
+
+	A = [3, 8, 9, 7, 6]
+	K = 3
+the function should return [9, 7, 6, 3, 8]. Three rotations were made:
+
+	[3, 8, 9, 7, 6] -> [6, 3, 8, 9, 7]
+	[6, 3, 8, 9, 7] -> [7, 6, 3, 8, 9]
+	[7, 6, 3, 8, 9] -> [9, 7, 6, 3, 8]
+*/
+vector<int> CodilityTest::CyclicRotation(vector<int> &A, int K) 
+{
+	// write your code in C++14 (g++ 6.2.0)
+	int size = A.size();
+	if (size == 0)
+		return A;
+
+	if (K >= size)
+		K = K % size;
+	if (K == size)
+		return A;
+
+	vector<int> result(A.size());
+	for (int i = 0; i < K; ++i)
+	{
+		result[i] = A[size - K + i];
+	}
+	for (int i = 0; i < (size - K); ++i)
+	{
+		result[K + i] = A[i];
+	}
+	return result;
 }

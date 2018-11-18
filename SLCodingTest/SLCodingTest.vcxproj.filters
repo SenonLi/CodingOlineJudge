@@ -29,6 +29,9 @@
     <ClInclude Include="Codility\CodilityTest.h">
       <Filter>Header Files\Codility</Filter>
     </ClInclude>
+    <ClInclude Include="SolutionManual\CISolutionManual.h">
+      <Filter>Header Files\SolutionManual</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -39,6 +42,9 @@
     </ClCompile>
     <ClCompile Include="Codility\CodilityTest.cpp">
       <Filter>Source Files\Codility</Filter>
+    </ClCompile>
+    <ClCompile Include="SolutionManual\CISolutionManual.cpp">
+      <Filter>Source Files\SolutionManual</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
