@@ -108,3 +108,32 @@ vector<int> CodilityTest::CyclicRotation(vector<int> &A, int K)
 	}
 	return result;
 }
+
+
+int CodilityTest::OddOccurrencesInArray(vector<int> &A) 
+{
+	int result = 0;
+
+	for (int a : A)
+	{
+		result ^= a;
+	}
+
+	return result;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
