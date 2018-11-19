@@ -22,6 +22,8 @@ public:
 	// Minimize the value |(A[0] + ... + A[P-1]) - (A[P] + ... + A[N-1])|
 	int TapeEquilibrium(vector<int> &A);
 
+	// Check whether array A is a permutation.
+	int PermCheck(vector<int> &A);
 
 private:
 	int GetNextBinaryGap(int& N);

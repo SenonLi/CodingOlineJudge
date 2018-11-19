@@ -184,6 +184,31 @@ int CodilityTest::TapeEquilibrium(vector<int> &A)
 
 
 
+int CodilityTest::PermCheck(vector<int> &A) 
+{
+	int result = 1;
+	std::vector<int> checkAppearance(A.size());
+
+	for (unsigned int i = 0; i < A.size(); i++) {
+		checkAppearance[i] = false;
+	}
+
+	for (unsigned int i = 0; i < A.size(); i++) {
+		// 1. A[i] should be larger than size()
+		// 2. same value should not appear more than once
+		// 3. cannot simply calculate sum, cause same value may appear more than once
+		if (A[i] <= A.size() && checkAppearance[A[i] - 1] == false) {
+			checkAppearance[A[i] - 1] = true;
+		}
+		else {
+			result = 0;
+			break;
+		}
+	}
+
+	return result;
+}
+
 
 
 
