@@ -29,6 +29,8 @@ public:
 	int FrogRiverOne(int X, vector<int> &A);
 
 
+	vector<int> MaxCounters(int N, vector<int> &A);
+
 private:
 	int GetNextBinaryGap(int& N);
 };

@@ -243,3 +243,35 @@ int CodilityTest::FrogRiverOne(int X, vector<int> &A)
 
 	return -1;
 }
+
+
+
+vector<int> CodilityTest::MaxCounters(int N, vector<int> &A)
+{
+	std::vector<int> counters(N);
+	for (int cc : counters)
+		cc = 0;
+
+	int maxCounter = 0; // Actuall max
+	int generalMax = 0; // to be applied to all at the end
+	for (int i = 0; i < A.size(); ++i)
+	{
+		if (A[i] <= N)
+		{
+			// Apply generalMax first, then increase
+			counters[A[i] - 1] = std::max(generalMax, counters[A[i] - 1]);
+			counters[A[i] - 1] += 1;
+			maxCounter = std::max(maxCounter, counters[A[i] - 1]);
+		}
+		else
+		{
+			// To avoid to many times of MaxCounters, we only do general Max at the end using max
+			generalMax = maxCounter;
+		}
+	}
+
+	for (int& cc : counters)
+		cc = std::max(generalMax, cc);
+
+	return counters;
+}
