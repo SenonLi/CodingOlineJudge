@@ -275,3 +275,39 @@ vector<int> CodilityTest::MaxCounters(int N, vector<int> &A)
 
 	return counters;
 }
+
+
+int CodilityTest::MissingInteger(vector<int> &A)
+{
+	int result = 1;
+	std::vector<bool> appear(A.size());
+	int positiveCount = 0;
+
+	for (bool aa : appear)
+		aa = false;
+
+	for (int i = 0; i < A.size(); i++)
+	{
+		if (A[i] > 0) {
+			if (A[i] <= A.size() && appear[A[i] - 1] == false) {
+				positiveCount++;
+				appear[A[i] - 1] = true;
+			}
+		}
+	}
+
+	bool allPositive = true;
+	for (int i = 0; i < positiveCount; ++i)
+	{
+		if (!appear[i]) {
+			result = i + 1;
+			allPositive = false;
+			break;
+		}
+	}
+
+	// Below is important!!
+	if (allPositive && positiveCount <= A.size())
+		result = positiveCount + 1;
+	return result;
+}

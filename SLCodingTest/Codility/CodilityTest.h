@@ -28,8 +28,12 @@ public:
 	// Find the earliest time when a frog can jump to the other side of a river.
 	int FrogRiverOne(int X, vector<int> &A);
 
-
+	// Calculate the values of counters after applying all alternating operations 
+	// : increase counter by 1; set value of all counters to current maximum.
 	vector<int> MaxCounters(int N, vector<int> &A);
+
+	// Find the smallest positive integer that does not occur in a given sequence.
+	int MissingInteger(vector<int> &A);
 
 private:
 	int GetNextBinaryGap(int& N);
