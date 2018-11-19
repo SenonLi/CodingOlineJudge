@@ -25,6 +25,10 @@ public:
 	// Check whether array A is a permutation.
 	int PermCheck(vector<int> &A);
 
+	// Find the earliest time when a frog can jump to the other side of a river.
+	int FrogRiverOne(int X, vector<int> &A);
+
+
 private:
 	int GetNextBinaryGap(int& N);
 };

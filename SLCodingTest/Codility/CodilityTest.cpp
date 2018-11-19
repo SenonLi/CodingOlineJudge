@@ -211,5 +211,35 @@ int CodilityTest::PermCheck(vector<int> &A)
 
 
 
+int CodilityTest::FrogRiverOne(int X, vector<int> &A) 
+{
+	if (A.size() < X)
+		return -1;
 
+	std::vector<bool> appeared(X);
+	for (bool a : appeared)
+		a = false;
 
+	int curStep = 0;
+	for (int curIndex = 0; curIndex < A.size(); ++curIndex)
+	{
+		appeared[A[curIndex] - 1] = true;
+		if (A[curIndex] == curStep + 1)
+		{
+			curStep += 1;
+
+			for (int step = curStep + 1; step <= X; ++step)
+			{
+				if (appeared[step - 1] == true)
+					curStep = step;
+				else
+					break;
+			}
+
+			if (curStep == X)
+				return curIndex;
+		}
+	}
+
+	return -1;
+}
