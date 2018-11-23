@@ -311,3 +311,31 @@ int CodilityTest::MissingInteger(vector<int> &A)
 		result = positiveCount + 1;
 	return result;
 }
+
+int CodilityTest::PerfectSquare(int A, int B)
+{
+		if (B < 0)
+			return 0;
+
+		int start = 0;
+		int end = B;
+		if (A > 0) {
+			start = A;
+		}
+
+		return std::floor(std::sqrt(end)) - std::ceil(std::sqrt(start)) + 1;
+}
+
+
+int CodilityTest::DecimalSubString(int A, int B)
+{
+	std::string aa = std::to_string(A);
+	std::string bb = std::to_string(B);
+
+	std::size_t foundIndex = bb.find(aa);
+	if (foundIndex != std::string::npos)
+		return foundIndex;
+	else
+		return -1;
+}
+

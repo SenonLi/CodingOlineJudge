@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <string>
 using namespace std;
 
 
@@ -34,6 +35,12 @@ public:
 
 	// Find the smallest positive integer that does not occur in a given sequence.
 	int MissingInteger(vector<int> &A);
+
+	// Find the Number of perfect squares between two given numbers
+	int PerfectSquare(int A, int B);
+
+	// Find the positions at which the decimal representation of A occurs as a substring in a decimal representation of B
+	int DecimalSubString(int A, int B);
 
 private:
 	int GetNextBinaryGap(int& N);
