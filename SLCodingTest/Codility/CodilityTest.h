@@ -48,6 +48,9 @@ public:
 	// Find the minimal nucleotide from a range of sequence DNA.
 	vector<int> GenomicRangeQuery(string &S, vector<int> &P, vector<int> &Q);
 
+	// Find the minimal average of any slice containing at least two elements.
+	int MinAvgTwoSlice(vector<int> &A);
+
 private:
 	int GetNextBinaryGap(int& N);
 };

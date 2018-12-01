@@ -428,3 +428,36 @@ vector<int> CodilityTest::GenomicRangeQuery(string &S, vector<int> &P, vector<in
 
 	return result;
 }
+
+/*
+We only need to check slices of size 2 and 3 as the min average should be in the those sub-slices.
+For proof, see SLCodingTest\Codility\MinAvgTwoSlice_Proof.pdf written by Minh Tran Dao.
+
+More interesting proof: https://codesays.com/2014/solution-to-min-avg-two-slice-by-codility/
+
+*/
+int CodilityTest::MinAvgTwoSlice(vector<int> &A)
+{
+	int minPosition = 0;
+	double minAverage = (A[0] + A[1]) / 2.0;
+	// Will compare the average of A[i] and A[i+1] with minAverage
+	// Attension: the beginning of i must be 0 instead of 1
+	//  because the initial of minAverage did not consider first 3-element average calculation
+	for (int i = 0; i < A.size() - 1; ++i) {
+		if (minAverage > ((A[i] + A[i + 1]) / 2.0))
+		{
+			minAverage = (A[i] + A[i + 1]) / 2.0;
+			minPosition = i;
+		}
+
+		// Will compare the average of A[i], A[i+1] and A[i+2] with minAverage
+		if ((i < A.size() - 2) 
+			&& minAverage > ((A[i] + A[i + 1] + A[i + 2]) / 3.0))
+		{
+			minAverage = (A[i] + A[i + 1] + A[i + 2]) / 3.0;
+			minPosition = i;
+		}
+	}
+
+	return minPosition;
+}
