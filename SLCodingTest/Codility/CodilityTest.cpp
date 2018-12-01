@@ -369,3 +369,62 @@ int CodilityTest::PassingCars(vector<int> &A)
 
 	return passingCount;
 }
+
+
+/*
+Genomic Range Query
+
+The optimal idea is to keep a prefix sum of the number of occurences of each letter from the set [G,C,T,A] for every position in the target string. 
+Then, to evalute the minimal nucleotide between indices (a,b), 
+we can easily compute the total number of occurences of each of the nucleotides in O(1) time, and pick the smallest one.
+This leads to a total running time of O(N+M).
+
+	std::vector<int> testVecP = { 2, 5, 0 };
+	std::vector<int> testVecQ = { 4, 5, 6 };
+	std::string S = "CAGCCTA";
+
+	std::vector<int> result = test.GenomicRangeQuery(S, testVecP, testVecQ);
+
+	for (int i = 0; i < result.size(); ++i)
+		cout << result[i] << "  ";
+Output:
+	2	4	1
+*/
+vector<int> CodilityTest::GenomicRangeQuery(string &S, vector<int> &P, vector<int> &Q)
+{
+	vector<int> occurA(S.length());
+	vector<int> occurC(S.length());
+	vector<int> occurG(S.length());
+
+	int countA = 0;
+	int countC = 0;
+	int countG = 0;
+
+	for (int i = 0; i < S.length(); ++i) {
+		if (S[i] == 'A')
+			countA++;
+		else if (S[i] == 'C')
+			countC++;
+		else if (S[i] == 'G')
+			countG++;
+
+		occurA[i] = countA;
+		occurC[i] = countC;
+		occurG[i] = countG;
+	}
+
+	vector<int> result(P.size());
+	for (int i = 0; i < P.size(); ++i) {
+		char letterP = S[P[i]];
+		if (letterP == 'A'	|| occurA[Q[i]] > occurA[P[i]] )
+			result[i] = 1;
+		else if (letterP == 'C'	|| occurC[Q[i]] > occurC[P[i]])
+			result[i] = 2;
+		else if (letterP == 'G'	|| occurG[Q[i]] > occurG[P[i]])
+			result[i] = 3;
+		else 
+			result[i] = 4;
+	}
+
+	return result;
+}

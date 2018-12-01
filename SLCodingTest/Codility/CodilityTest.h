@@ -42,6 +42,12 @@ public:
 	// Find the positions at which the decimal representation of A occurs as a substring in a decimal representation of B
 	int DecimalSubString(int A, int B);
 
+	// Count the number of passing cars on the road.
+	int PassingCars(vector<int> &A);
+
+	// Find the minimal nucleotide from a range of sequence DNA.
+	vector<int> GenomicRangeQuery(string &S, vector<int> &P, vector<int> &Q);
+
 private:
 	int GetNextBinaryGap(int& N);
 };
