@@ -339,3 +339,33 @@ int CodilityTest::DecimalSubString(int A, int B)
 		return -1;
 }
 
+/*
+Array A contains only 0s and/or 1s:
+
+0 represents a car traveling east,
+1 represents a car traveling west.
+The goal is to count passing cars. 
+
+We say that a pair of cars (P, Q), where 0 ¡Ü P < Q < N, is passing when P is traveling to the east and Q is traveling to the west.
+
+This can be improved to O(N) as follows: 
+If we encounter a car going west (a 1), we know that it passes with every car before it that was going east (a 0).
+By keeping track of how many cars going east we¡¯ve seen so far, we can easily compute the total number of passing cars.
+*/
+int CodilityTest::PassingCars(vector<int> &A)
+{
+	int eastCount = 0;
+	int passingCount = 0;
+
+	for (int i : A) {
+		if (i == 0)
+			eastCount++;
+		else if (i == 1)
+			passingCount += eastCount;
+
+		if (passingCount > 1000000000)
+			return -1;
+	}
+
+	return passingCount;
+}
