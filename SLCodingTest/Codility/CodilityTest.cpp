@@ -461,3 +461,29 @@ int CodilityTest::MinAvgTwoSlice(vector<int> &A)
 
 	return minPosition;
 }
+
+/*
+0 is divisible by any positives.
+(0 / N) == 0
+
+*/
+int CodilityTest::CountDiv(int A, int B, int K)
+{
+	// 1. There are N = (B - A) numbers of integers to be consider;
+	// 2. There must be (N / K) or (N / K + 1) integers could be divisible;
+	// 3. The hard point is to determine whether (N / K) or (N / K + 1);
+	// 4. Easy to determine if (A % K == 0);
+	// 5. if (A % K != 0), we move A to the closest larger one, but smaller than B.
+
+	if (A % K == 0) {
+		// A==0 also be covered in this block!!
+		return (B - A) / K + 1;
+	}
+	else {
+		int newA = (A / K + 1) * K;
+		if (newA > B)
+			return 0;
+		else
+			return (B - newA) / K + 1;
+	}
+}

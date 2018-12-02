@@ -51,6 +51,9 @@ public:
 	// Find the minimal average of any slice containing at least two elements.
 	int MinAvgTwoSlice(vector<int> &A);
 
+	// Compute number of integers divisible by k in range [a..b].
+	int CountDiv(int A, int B, int K);
+
 private:
 	int GetNextBinaryGap(int& N);
 };
