@@ -63,6 +63,10 @@ public:
 	// Maximize A[P] * A[Q] * A[R] for any triplet (P, Q, R).
 	int MaxProductOfThree(vector<int> &A);
 
+	// Find the max drop in an array, and return its rounded value.
+	int MaxDrop(vector<float> readings);
+
+
 private:
 	int GetNextBinaryGap(int& N);
 };

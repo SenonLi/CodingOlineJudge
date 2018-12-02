@@ -568,3 +568,45 @@ int CodilityTest::MaxProductOfThree(vector<int> &A)
 }
 
 
+
+/*
+ Input: a vector of float values, size 0 <= N <= 1,000,000;   -250.0 <= A[i] <= 250.0
+ return:
+	1. find the max drop = A[i] - A[j], where 0 <= i < j <= N-1;
+	2. if the values are monotonically increasing (no drop), return -1;
+
+E.g.:
+	A = [8, 2, 4, 1, 10, 7, 2]
+	return 8 (= A[4] - A[6]) intead of 9, because i < j.
+ */
+int CodilityTest::MaxDrop(vector<float> A)
+{
+	if (A.size() < 2)
+		return -1;
+
+	float maxDrop = -250.0f;
+	float curMax = A[0];
+
+	for (int i = 1; i < A.size(); ++i) {
+
+		if (A[i] >= curMax) {
+			// update curMax, no update for maxDrop
+			curMax = A[i];
+		}
+		else {
+			// no update for curMax
+			float newDrop = curMax - A[i];
+			if (newDrop > maxDrop) {
+				maxDrop = newDrop;
+			}
+		}
+	}
+
+	if (maxDrop == -250.0f) // No drop, monotonous increasing
+		return -1;
+	else
+		return std::round(maxDrop);
+}
+
+
+
