@@ -54,6 +54,10 @@ public:
 	// Compute number of integers divisible by k in range [a..b].
 	int CountDiv(int A, int B, int K);
 
+	// Compute number of distinct values in an array.
+	int Distinct(vector<int> &A);
+
+
 private:
 	int GetNextBinaryGap(int& N);
 };

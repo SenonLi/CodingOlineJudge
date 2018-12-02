@@ -487,3 +487,35 @@ int CodilityTest::CountDiv(int A, int B, int K)
 			return (B - newA) / K + 1;
 	}
 }
+
+/*
+https://www.martinkysel.com/codility-distinct-solution/
+
+Complexity:
+Time complexity is O(N * log(N));
+Space complexity is O(N)
+
+Using C++, the std set is a Red-Black Tree,
+and therefore has insertion complexity of log N. (overall N log N)
+
+*/
+#include <set>
+
+int CodilityTest::Distinct(vector<int> &A) {
+	set<int> orderedSet;
+	for (auto i : A) {
+		orderedSet.insert(i);
+	}
+
+	return orderedSet.size();
+}
+
+
+
+
+
+
+
+
+
+
