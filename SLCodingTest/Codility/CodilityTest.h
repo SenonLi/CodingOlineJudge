@@ -60,6 +60,9 @@ public:
 	// Determine whether a triangle can be built from a given set of edges.
 	int Triangle(vector<int> &A);
 
+	// Maximize A[P] * A[Q] * A[R] for any triplet (P, Q, R).
+	int MaxProductOfThree(vector<int> &A);
+
 private:
 	int GetNextBinaryGap(int& N);
 };

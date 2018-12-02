@@ -542,7 +542,29 @@ int CodilityTest::Triangle(vector<int> &A)
 	return 0;
 }
 
+/*
+ time complexity: O(N * log(N))
+*/
+#include <algorithm>
 
+int CodilityTest::MaxProductOfThree(vector<int> &A)
+{
+	// sort in decending order
+	std::sort(A.begin(), A.end(), std::greater<int>());
 
+	if (A[0] < 0) {
+		// all integers are negative, the product is nagetive;
+		// chose the first three elements (e.g. -1, -2, -3)
+		return A[0] * A[1] * A[2];
+	}
+	else if (A[0] == 0) {
+		return 0;
+	}
+	else {
+		// A[0] > 0, just compare first 3 and first multiple last two
+		// Actually, this third case can also cover case A[0] < 0 and A[0] == 0
+		return std::max(A[0] * A[A.size() - 1] * A[A.size() - 2], A[0] * A[1] * A[2]);
+	}
+}
 
 
