@@ -57,6 +57,8 @@ public:
 	// Compute number of distinct values in an array.
 	int Distinct(vector<int> &A);
 
+	// Determine whether a triangle can be built from a given set of edges.
+	int Triangle(vector<int> &A);
 
 private:
 	int GetNextBinaryGap(int& N);

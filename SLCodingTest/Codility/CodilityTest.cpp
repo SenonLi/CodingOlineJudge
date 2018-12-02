@@ -512,8 +512,35 @@ int CodilityTest::Distinct(vector<int> &A) {
 
 
 
+/*
+By sorting the array, we have guaranteed that P+R > Q and Q+R > P 
+(because R is always the biggest).
+Now what remains, is the proof that P+Q > R, that can be found out by traversing the array.
+The chance to find such a combination is with three adjacent values as they provide the highest P and Q.
 
+std::sort is most likely to use QuickSort, or at least a variation over QuickSort called IntroSort,
+which "degenerates" to HeapSort when the recursion goes too deep.
 
+std::stable_sort is most likely to use MergeSort, because of the stability requirement.
+However note that MergeSort requires extra space in order to be efficient.
+*/
+#include <algorithm>
+
+int CodilityTest::Triangle(vector<int> &A)
+{
+
+	if (A.size() < 3)
+		return 0;
+
+	std::stable_sort(A.begin(), A.end());
+	for (int i = 0; i < A.size() - 2; ++i) {
+		// Need to use minus instead of A[i] + A[1] > A[2] in case of overflow
+		if (A[i] > 0 && A[i] > A[i + 2] - A[i + 1])
+			return 1;
+	}
+
+	return 0;
+}
 
 
 
