@@ -66,6 +66,8 @@ public:
 	// Find the max drop in an array, and return its rounded value.
 	int MaxDrop(vector<float> readings);
 
+	// Compute the number of intersections in a sequence of discs.
+	int NumberOfDiscIntersections(vector<int> &A);
 
 private:
 	int GetNextBinaryGap(int& N);

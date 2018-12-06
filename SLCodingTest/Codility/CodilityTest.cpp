@@ -609,4 +609,57 @@ int CodilityTest::MaxDrop(vector<float> A)
 }
 
 
+/*
+ The purpose of this function is to find the intersection between to 1D segments.
+ Every segment: left, right
+ Every intersection pair: 
+ If seg_1.right >=seg_2.right, we could call seg_1 "rightSeg";
+ Intersection Pair Condition:
+      a. rightSeg.left <= leftSeg.right;
+      b. rightSeg.right >= leftSeg.right;
+ Basically, to find out whether two segments are intersected, we need rightSeg.right, rightSeg.left, and leftSeg.right. We don't need leftSeg.left because we count the intersectio no matter leftSeg is partially overlapped or entirely overlapped;
+ Algorithm trick: 
+        We only count the number, no need to log the index;
+          we only need to compare sortedLeft[leftIndex] and sortedRight[rightIndex], and calculate "leftIndex - rightIndex - 1", no need to consider "Condition b", because all situations that doesn't apply "Condition b" has been deducted by "- rightIndex"; the end part of "- 1" is to make sure the rightSeg itself is not counted.
+
+Example test:    [1, 5, 2, 1, 4, 0]
+Expected Answer: 11
+
+*/
+#include <algorithm>
+int CodilityTest::NumberOfDiscIntersections(vector<int> &A)
+{
+	if (A.size() < 2)
+		return 0;
+
+	// In case of overflow, lefts and rights must be long value instead of int value;
+	// Attention: the index "i" in the for_loop was used to calculate lefts and rights, it must be type long instead of type int
+	vector<long> lefts;
+	vector<long> rights;
+	for (int i = 0; i < A.size(); ++i) {
+		lefts.push_back(static_cast<long>(i) - A[i]);
+		rights.push_back(static_cast<long>(i) + A[i]);
+	}
+
+	std::sort(lefts.begin(), lefts.end());
+	std::sort(rights.begin(), rights.end());
+
+	int intersectionCount = 0;
+	for (int leftIndex = 0, rightIndex = 0; rightIndex < A.size(); ++rightIndex) {
+		// Traverse the sorted rights array, and count the intersections one by one
+		while (leftIndex < A.size() && rights[rightIndex] >= lefts[leftIndex])
+			++leftIndex;
+
+		intersectionCount += leftIndex - rightIndex - 1;
+		// Explanation:
+		//      1. "leftIndex" contains all segments that apply "Condition a";
+		//      2. "leftIndex - rightIndex" applied "Condition b";
+		//      3. "- 1" makes sure that the curSeg itself was not counted.
+		if (intersectionCount > 1e7)
+			return -1;
+	}
+
+	return intersectionCount;
+
+}
 
