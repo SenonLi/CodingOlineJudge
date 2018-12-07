@@ -663,3 +663,40 @@ int CodilityTest::NumberOfDiscIntersections(vector<int> &A)
 
 }
 
+/*
+S is empty;
+S has the form "(U)" or "[U]" or "{U}" where U is a properly nested string;
+S has the form "VW" where V and W are properly nested strings.
+For example, the string "{[()()]}" is properly nested but "([)()]" is not.
+*/
+#include <stack>
+int CodilityTest::Brackets(string &S)
+{
+	if (S.empty())
+		return 1;
+	if (S.size() % 2 == 1 || S[0] == '}' || S[0] == ']' || S[0] == ')')
+		return 0;
+
+	std::stack<char> check;
+	check.push(S[0]);
+	for (int i = 1; i < S.length(); ++i) {
+		if (S[i] == '{' || S[i] == '[' || S[i] == '(') {
+			check.push(S[i]);
+		}
+		else if (S[i] == '}') {
+			if (check.top() == '{')     check.pop();
+			else        				return 0;
+		}
+		else if (S[i] == ']') {
+			if (check.top() == '[')     check.pop();
+			else        				return 0;
+		}
+		else if (S[i] == ')') {
+			if (check.top() == '(')     check.pop();
+			else        				return 0;
+		}
+	}
+
+	// only empty means a match, otherwise, "{({[" would also pass
+	return check.empty() ? 1 : 0;
+}

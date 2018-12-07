@@ -69,6 +69,9 @@ public:
 	// Compute the number of intersections in a sequence of discs.
 	int NumberOfDiscIntersections(vector<int> &A);
 
+	// Determine whether a given string of parentheses (multiple types) is properly nested.
+	int Brackets(string &S);
+
 private:
 	int GetNextBinaryGap(int& N);
 };
