@@ -72,6 +72,10 @@ public:
 	// Determine whether a given string of parentheses (multiple types) is properly nested.
 	int Brackets(string &S);
 
+	// Cover "Manhattan skyline" using the minimum number of rectangles.
+	int StoneWall(vector<int> &H);
+
+
 private:
 	int GetNextBinaryGap(int& N);
 };

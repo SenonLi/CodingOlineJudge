@@ -700,3 +700,41 @@ int CodilityTest::Brackets(string &S)
 	// only empty means a match, otherwise, "{({[" would also pass
 	return check.empty() ? 1 : 0;
 }
+
+
+/*
+For example, given array H containing N = 9 integers:
+ [8, 8, 5, 7, 9, 8, 7, 4, 8]
+the function should return 7. The figure shows one possible arrangement of seven blocks.
+*/
+#include <stack>
+int CodilityTest::StoneWall(vector<int> &H)
+{
+	// write your code in C++11
+	stack<int> stonesStack;
+	int cnt = 0;
+	H.push_back(0);
+	for (size_t i = 0; i < H.size(); i++) {
+		if (stonesStack.empty() || stonesStack.top() <= H[i]) {
+			// Define the necessary stone "independent stone";
+			// "myStack.empty()" : push into stack, waiting the failing edge to Count As the top "independent stone";
+			// "myStack.top() <= H[i]" : Rising Edge, need to push and wait for the counting of "falling edge" to be one "independent stone"
+			stonesStack.push(H[i]);
+		}
+		else {
+			// Where there is a Falling-Edge,
+			// start counting for the "Independent Stone"s based on levels that the stonesStack drops;
+			// use while-loop to automatically drop.
+			while (!stonesStack.empty() && stonesStack.top() > H[i]) {
+				// Count the "independent stone"s in this block;
+				int cur = stonesStack.top();
+				stonesStack.pop();					// 
+				if (stonesStack.empty()				// Count: the bottom stone sitting on the ground
+					|| stonesStack.top() != cur)	// Same WallHight only count once, one stone for the connected level
+					cnt++;
+			}
+			stonesStack.push(H[i]);
+		}
+	}
+	return cnt;
+}
