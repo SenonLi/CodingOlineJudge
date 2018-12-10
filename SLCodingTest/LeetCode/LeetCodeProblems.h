@@ -10,7 +10,8 @@ class LeetCodeProblems
 {
 public:
 	// 218. The Skyline Problem
-	vector<pair<int, int>> GetSkyline_218(vector<vector<int>>& buildings);
+	vector<pair<int, int>> GetSkyline_218_PriorityQueue(vector<vector<int>>& buildings);
+	vector<pair<int, int>> GetSkyline_218_MultiSet(vector<vector<int>>& buildings);
 
 
 };

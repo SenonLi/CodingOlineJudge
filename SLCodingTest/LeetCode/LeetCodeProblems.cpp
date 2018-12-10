@@ -28,7 +28,7 @@ struct BuildingLineNode {
 	BuildingLineNode(int x, int y, LineNodeSideType type) : m_X(x), m_Y(y), m_SideType(type) {};
 };
 
-vector<pair<int, int>> LeetCodeProblems::GetSkyline_218(vector<vector<int>>& buildings)
+vector<pair<int, int>> LeetCodeProblems::GetSkyline_218_PriorityQueue(vector<vector<int>>& buildings)
 {
 	vector<BuildingLineNode> buildingLineNodes;
 	for (auto &b : buildings) {
@@ -102,6 +102,49 @@ vector<pair<int, int>> LeetCodeProblems::GetSkyline_218(vector<vector<int>>& bui
 	return result;
 }
 
+/*
+GetSkyline_218_MultiSet is a short version of GetSkyline_218_PriorityQueue using MultiSet for easy Element-Erasing
+Using the trick of negative left-height
+and 
+default sorting of pair<int, int> : when first int (x) is same with each other, sort with second int (y);
+									the negative left-left-height will generate		abs-descending order;
+									and positive right-right-height will generate	abs-ascending order;
+									the easy erasing of MultiSet could help avoid left-right-height comparison.
+See GetSkyline_218_PriorityQueue to understand how the sorting help solve all possible cases.
+*/
+#include <set>
+vector<pair<int, int>> LeetCodeProblems::GetSkyline_218_MultiSet(vector<vector<int>>& buildings)
+{
+	vector<pair<int, int>> buildingLineNodes;
+	for (auto &b : buildings) {
+		// Add negative height for easy sorting of same left-left-height buildings problem
+		buildingLineNodes.emplace_back(b[0], -b[2]);
+		 // Default ascending order of rightLindNodes could avoid right-right-height buildings problem
+		buildingLineNodes.emplace_back(b[1], b[2]);
+	}
+	std::sort(buildingLineNodes.begin(), buildingLineNodes.end());
+	multiset<int> heightMultiSet;
+	heightMultiSet.insert(0); // Adding the bottom 0 is important, because we also need the ground keyPoints!
+	vector<pair<int, int>> result;
+	int lastMaxHeight = 0, currentMaxHeight = 0;
+	for (auto &lineNode : buildingLineNodes) {
+		if (lineNode.second < 0) {
+			heightMultiSet.insert(-lineNode.second);
+		}
+		else {
+			heightMultiSet.erase(heightMultiSet.find(lineNode.second));
+		}
+
+		// The MultiSet default ascending sorting algorithm will help make sure below is correct;
+		// To totally understand, see the explanation in GetSkyline_218_PriorityQueue.
+		currentMaxHeight = *heightMultiSet.rbegin();
+		if (currentMaxHeight != lastMaxHeight) {
+			result.push_back({ lineNode.first, currentMaxHeight });
+			lastMaxHeight = currentMaxHeight;
+		}
+	}
+	return result;
+}
 
 
 
