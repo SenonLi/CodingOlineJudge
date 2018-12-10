@@ -21,6 +21,12 @@
     <Filter Include="Source Files\Codility">
       <UniqueIdentifier>{40d9693c-442d-459c-a64d-90fa2fe79ac1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\LeetCode">
+      <UniqueIdentifier>{82b834f3-15d8-43c1-bced-e330c0545c06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\LeetCode">
+      <UniqueIdentifier>{7d25a172-d80e-45ee-a8ee-1c8573dfea08}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -31,6 +37,9 @@
     </ClInclude>
     <ClInclude Include="SolutionManual\CISolutionManual.h">
       <Filter>Header Files\SolutionManual</Filter>
+    </ClInclude>
+    <ClInclude Include="LeetCode\LeetCodeProblems.h">
+      <Filter>Header Files\LeetCode</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -45,6 +54,9 @@
     </ClCompile>
     <ClCompile Include="SolutionManual\CISolutionManual.cpp">
       <Filter>Source Files\SolutionManual</Filter>
+    </ClCompile>
+    <ClCompile Include="LeetCode\LeetCodeProblems.cpp">
+      <Filter>Source Files\LeetCode</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

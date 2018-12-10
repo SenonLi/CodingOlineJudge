@@ -713,7 +713,7 @@ int CodilityTest::StoneWall(vector<int> &H)
 	// write your code in C++11
 	stack<int> stonesStack;
 	int cnt = 0;
-	H.push_back(0);
+	H.push_back(0); // Add ground as last End wall for stonesStack to pop
 	for (size_t i = 0; i < H.size(); i++) {
 		if (stonesStack.empty() || stonesStack.top() <= H[i]) {
 			// Define the necessary stone "independent stone";
@@ -728,7 +728,7 @@ int CodilityTest::StoneWall(vector<int> &H)
 			while (!stonesStack.empty() && stonesStack.top() > H[i]) {
 				// Count the "independent stone"s in this block;
 				int cur = stonesStack.top();
-				stonesStack.pop();					// 
+				stonesStack.pop();					 
 				if (stonesStack.empty()				// Count: the bottom stone sitting on the ground
 					|| stonesStack.top() != cur)	// Same WallHight only count once, one stone for the connected level
 					cnt++;
@@ -738,3 +738,4 @@ int CodilityTest::StoneWall(vector<int> &H)
 	}
 	return cnt;
 }
+
