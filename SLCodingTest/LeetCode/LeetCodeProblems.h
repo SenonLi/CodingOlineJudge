@@ -13,6 +13,8 @@ public:
 	vector<pair<int, int>> GetSkyline_218_PriorityQueue(vector<vector<int>>& buildings);
 	vector<pair<int, int>> GetSkyline_218_MultiSet(vector<vector<int>>& buildings);
 
+	// 26. Remove Duplicates from Sorted Array
+	int RemoveDuplicates_26(vector<int>& nums);
 
 };
 

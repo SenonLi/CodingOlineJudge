@@ -147,4 +147,30 @@ vector<pair<int, int>> LeetCodeProblems::GetSkyline_218_MultiSet(vector<vector<i
 }
 
 
+/*
+Since the array is already sorted, we can keep two pointers ii and jj,
+where ii is the slow-runner while jj is the fast-runner.
 
+As long as nums[i] = nums[j]nums[i]=nums[j], we increment jj to skip the duplicate
+*/
+int LeetCodeProblems::RemoveDuplicates_26(vector<int>& nums)
+{
+	if (nums.size() < 2) {
+		return nums.size();
+	}
+
+	std::vector<int>::iterator slow = nums.begin();
+	std::vector<int>::iterator fast = slow + 1;
+	while (fast != nums.end()) {
+		if (*fast == *slow)
+			fast++;
+		else {
+			slow++;
+			*slow = *fast;
+		}
+	}
+	slow++;
+	nums.erase(slow, nums.end());
+
+	return nums.size();
+}
