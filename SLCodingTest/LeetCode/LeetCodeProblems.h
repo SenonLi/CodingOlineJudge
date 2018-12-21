@@ -16,5 +16,8 @@ public:
 	// 26. Remove Duplicates from Sorted Array
 	int RemoveDuplicates_26(vector<int>& nums);
 
+	// 38. Count and Say
+	string _38_CountAndSay(int n);
+
 };
 

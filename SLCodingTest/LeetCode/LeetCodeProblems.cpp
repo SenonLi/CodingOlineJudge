@@ -174,3 +174,42 @@ int LeetCodeProblems::RemoveDuplicates_26(vector<int>& nums)
 
 	return nums.size();
 }
+
+
+string LeetCodeProblems::_38_CountAndSay(int n)
+{
+	string say = "1";
+	if (n == 1)
+		return say;
+
+	string nextSay;
+	for (int i = 2; i <= n; ++i) {
+		// in each loop, say is the input, nextSay is the output
+		int count = 1;
+		// To decide the count, we need to compare, which means there will be at least two char needed;
+		// std::string will always have '\0' at the end, which could be used (j will start from 1 to the end '\0')
+		for (int j = 1; j <= say.length(); ++j) {
+			if (say[j] == say[j-1]) {
+				count++;
+			}
+			else {
+				nextSay.push_back(count + '0');
+				nextSay.push_back(say[j-1]);
+
+				// Update and Reset
+				count = 1;
+			}
+		}
+
+		// Update and Reset
+		say = nextSay;
+		nextSay = "";
+	}
+
+	return say;
+}
+
+
+
+
+
