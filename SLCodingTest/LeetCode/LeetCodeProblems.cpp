@@ -211,5 +211,124 @@ string LeetCodeProblems::_38_CountAndSay(int n)
 
 
 
+/*
+	Directed-Edges times[i] = (fromNode, toNode, timeCost);
+	There are N network nodes, labelled 1 to N.
+	send a signal from a certain node K, K will be in the range [1, N]
+	How long will it take for all nodes to receive the signal?
+*/
+int LeetCodeProblems::_743_NetworkDelayTime_Dijkstra(vector<vector<int>>& times, int N, int K)
+{
+	// Creat directedEdges, a vector based on fromNodeIndex, each element contains a vector of {toNode, timeCost}
+	// the directedEdges is based on times, no size requirements (doesn't have to be N*N), but still fromNode-traceable
+	vector<vector<std::pair<int, int>>> directedEdges(N);
+	for (int i = 0; i < times.size(); i++) {
+		int fromNode = times[i][0] - 1, toNode = times[i][1] - 1, timeCost = times[i][2];
+		directedEdges[fromNode].push_back({toNode, timeCost});
+	}
+	
+	// start from the sourceNode, then to the next closest connected node, 
+	// priority_queue will be used to get the closest connected node (all connected nodes will be pushed, and the shortest will be popped)
+	// the loop will end when all connected nodes have been popped (all connected nodes are calculated)
+	// priority_queue will sort based on timeCost, and toNode is the auxiliary paired data: std::pair<int timeCost, int toNode>
+	priority_queue<pair<int, int>, vector<std::pair<int, int>>, std::greater<void>> curNodeLeastTimeCostQueue;
+	
+	// The source Node is always zero, and we start traversing the directedEdges from the sourceNode 
+	curNodeLeastTimeCostQueue.push({ 0, K - 1});
+	
+	// The while loop below is to calculate the shortest timeCostFromSrcNode from SourceNode to all the other nodes, saved into leastSrcToNodesTimeCosts
+	vector<int> leastSrcToNodesTimeCosts(N, -1);
+	while (!curNodeLeastTimeCostQueue.empty()) {
+		// always start from top(), which toNode has the least timeCostFromSrcNode (fromSrcNode to toNode)
+		pair<int, int> newClosestNode = curNodeLeastTimeCostQueue.top();
+		curNodeLeastTimeCostQueue.pop();
+		int timeCostFromSrcNode = newClosestNode.first;
+		int targetNode = newClosestNode.second;
+
+		if (leastSrcToNodesTimeCosts[targetNode] != -1)
+			continue; // if not -1, toNode must alreay got the least timeCostFromSrcNode
+		else
+		{
+			leastSrcToNodesTimeCosts[targetNode] = timeCostFromSrcNode;
+			for (pair<int, int> edgeTimeCost : directedEdges[targetNode])
+				curNodeLeastTimeCostQueue.push({ edgeTimeCost.second + timeCostFromSrcNode, edgeTimeCost.first });
+		}
+
+	}
+	
+	int result = 0;
+	for (int i = 0; i < N; i++) {
+		if (leastSrcToNodesTimeCosts[i] == -1) 
+			return -1;
+		result = std::max(result, leastSrcToNodesTimeCosts[i]);
+	}
+	return result;
+}
 
 
+int LeetCodeProblems::_743_NetworkDelayTime(vector<vector<int>>& times, int N, int K)
+{
+	vector<int> dist(N + 1, INT_MAX);
+	dist[K] = 0;
+	for (int i = 0; i < N; i++) {
+		for (vector<int> e : times) {
+			int u = e[0], v = e[1], w = e[2];
+			if (dist[u] != INT_MAX && dist[v] > dist[u] + w) {
+				dist[v] = dist[u] + w;
+			}
+		}
+	}
+
+	int maxwait = 0;
+	for (int i = 1; i <= N; i++)
+		maxwait = max(maxwait, dist[i]);
+	return maxwait == INT_MAX ? -1 : maxwait;
+}
+
+#include <stack>
+int LeetCodeProblems::_743_NetworkDelayTime_100(vector<vector<int>>& times, int N, int K)
+{
+	vector<int> currentTime(N, -1);
+	K = K - 1; // make zero based.
+
+	// convert to a matrix for fast access, and make indexes zero based
+	vector<vector<int>> travelMap(N, vector<int> {});
+	for (auto& tm : travelMap) {
+		tm.assign(N, -1);
+	}
+	for (auto& t : times) {
+		travelMap[t[0] - 1][t[1] - 1] = t[2];
+	}
+
+	stack<int> toProcess;
+	toProcess.push(K);
+	currentTime[K] = 0;
+
+	do {
+		int node = toProcess.top();
+		toProcess.pop();
+		int curNodeTime = currentTime[node];
+
+		for (int target = 0; target < N; target++) {
+			int travelTime = travelMap[node][target];
+			if (travelTime < 0) {
+				continue;
+			}
+			const int newTime = curNodeTime + travelTime;
+			if (currentTime[target] == -1 || newTime < currentTime[target]) {
+				currentTime[target] = newTime;
+				toProcess.push(target);
+			}
+		}
+	} while (toProcess.size() > 0);
+
+	int maxTime = 0;
+	for (int t : currentTime) {
+		if (t == -1) {
+			return -1;
+		}
+		maxTime = max(maxTime, t);
+	}
+
+	return maxTime;
+}
